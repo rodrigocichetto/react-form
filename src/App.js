@@ -1,10 +1,12 @@
 import React from 'react';
 import Menu from './components/Menu/Menu';
+import PurchaseCheckout from './components/Purchase/Checkout';
 
-function App() {
+const App = () => {
   return (
     <>
       <Menu />
+      <PurchaseCheckout />
     </>
   );
 }
