@@ -1,0 +1,24 @@
+nav.menu {
+    background: #201F20;
+    /* justify-content: flex-end; */
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item::before {
+    content: '';
+    display: table;
+    position: absolute;
+    top: 1em;
+    left: -0.1em;
+    width: 0.5em;
+    height: 0.5em;
+    border: 0.01em solid #0B92A5;
+    border-radius: 50%;
+}
+
+.nav-item:first-child:before {
+    display: none;
+}
