@@ -1,0 +1,23 @@
+.loan-checkout__step {
+  font-size: 0.8rem;
+  align-items: center;
+}
+
+.loan-checkout__step-number {
+  display: flex;
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: 0.5rem;
+  border: 0.2rem solid #282728;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.loan-checkout__step.active .loan-checkout__step-number,
+.loan-checkout__step.visited .loan-checkout__step-number {
+  background: #282728;
+  color: #0995A9;
+}
