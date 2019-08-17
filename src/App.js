@@ -1,12 +1,12 @@
 import React from 'react';
 import Menu from './components/Menu/Menu';
-import PurchaseCheckout from './components/Purchase/Checkout';
+import LoanCheckout from './components/Loan/Checkout';
 
 const App = () => {
   return (
     <>
       <Menu />
-      <PurchaseCheckout />
+      <LoanCheckout />
     </>
   );
 }

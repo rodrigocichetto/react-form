@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+// eslint-disable-next-line
+import $ from 'jquery';
+import 'bootstrap/js/dist/collapse.js';
 import './styles/fonts.css';
 import './index.css';
 

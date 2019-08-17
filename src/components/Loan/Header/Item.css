@@ -1,0 +1,10 @@
+span.prefix, span.suffix {
+  color: #0995A9;
+  font-size: 0.6rem;
+  display: block;
+}
+
+.loan-checkout__item {
+  font-size: 1.4rem;
+  line-height: 1.2rem;
+}
