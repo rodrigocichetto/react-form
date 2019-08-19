@@ -1,0 +1,9 @@
+.submit {
+  background: #E7E3D9;
+  font-size: 1.5rem;
+}
+
+.submit.disabled {
+  color: rgba(0,0,0, 0.5);
+  cursor: not-allowed;
+}

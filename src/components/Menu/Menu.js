@@ -8,7 +8,7 @@ const Menu = () => (
     <button className="navbar-toggler" type="button" data-toggle="collapse"
       data-target="#navbarNav" aria-controls="navbarNav"
       aria-expanded="false" aria-label="Toggle navigation">
-      M
+      <i className="fas fa-bars"></i>
     </button>
     <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul className="nav nav-pills float-right">

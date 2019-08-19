@@ -18,7 +18,8 @@ const CustomInput = (props) => {
       </label>
       <input type={props.inputType || 'text'} id={props.name}
         name={props.name} className="custom-input w-100 py-2 font-weight-bold
-        text-uppercase bg-transparent" />
+        text-uppercase bg-transparent" inputMode={props.inputmode || 'text'}
+        placeholder={props.placeholder} />
     </>
   );
 

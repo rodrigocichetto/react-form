@@ -21,3 +21,7 @@ nav.menu {
 .nav-item:first-child:before {
   display: none;
 }
+
+.navbar-toggler .fas {
+  color: #FFF;
+}

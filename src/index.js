@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 // eslint-disable-next-line
 import $ from 'jquery';
 import 'jquery-mask-plugin';
