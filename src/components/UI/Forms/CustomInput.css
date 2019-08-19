@@ -1,0 +1,13 @@
+.custom-input {
+  border: 0.2rem solid;
+  font-size: 1.5rem;
+  outline: none;
+}
+
+.custom-input:focus {
+  border-color: #0995A9;
+}
+
+.custom-input.error {
+  border-color: #a90909;
+}
