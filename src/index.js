@@ -6,6 +6,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import $ from 'jquery';
 import 'jquery-mask-plugin';
 import 'bootstrap/js/dist/collapse.js';
+import 'bootstrap/js/dist/alert.js';
 import './styles/fonts.css';
 import './index.css';
 

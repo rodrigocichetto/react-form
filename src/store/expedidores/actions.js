@@ -2,9 +2,10 @@
 
 import * as t from './types';
 import axios from 'axios';
+import CONFIG from '../../utils/config';
 
-const getExpedidores = (dispatch) => {
-  axios.get('http://5d55ea53d3db4b0014a037b1.mockapi.io/orgaos-expedidores')
+export const getExpedidores = (dispatch) => {
+  axios.get(`${CONFIG.API_URL}orgaos-expedidores`)
     .then(response => dispatch(success(response.data)))
     .catch(error => dispatch(failed(error)));
 };
@@ -22,5 +23,3 @@ function failed(error) {
     error
   };
 }
-
-export default getExpedidores;

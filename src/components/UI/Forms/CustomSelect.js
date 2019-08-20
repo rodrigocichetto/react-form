@@ -11,7 +11,8 @@ const CustomSelect = (props) => {
       </label>
       <select type={props.inputType || 'text'} id={props.name} onChange={props.onChange}
         name={props.name} className={`${props.hasError ? 'error': ''} custom-select
-        w-100 py-2 font-weight-bold text-uppercase bg-transparent`} onBlur={props.onBlur}>
+        w-100 py-2 font-weight-bold text-uppercase bg-transparent`}
+        value={props.value} onBlur={props.onBlur}>
         {/* <option selected disabled hidden value="">{props.placeholder}</option> */}
         {props.options.map(expedidor => (
           <option key={expedidor.value} value={expedidor.value}>{expedidor.label}</option>

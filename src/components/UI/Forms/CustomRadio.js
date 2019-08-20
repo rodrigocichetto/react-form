@@ -6,7 +6,7 @@ const CustomRadio = (props) => {
 
   return (
     <>
-      <label htmlFor={props.value}
+      <label htmlFor={props.value} onClick={() => props.validate()}
         className={`custom-radio__label d-block ${props.activeItem === props.value ? 'active' : ''}
         ${props.hasError ? 'error': ''} text-uppercase w-100 p-2 text-center
         font-weight-bold text-uppercase`}>
