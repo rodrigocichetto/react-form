@@ -22,3 +22,7 @@
     display: none;
   }
 }
+
+.label-error {
+  color: #a90909;
+}

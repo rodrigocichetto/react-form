@@ -16,10 +16,10 @@ const CustomInput = (props) => {
       <label htmlFor={props.name} className="d-block text-uppercase font-weight-bold">
         {props.label}
       </label>
-      <input type={props.inputType || 'text'} id={props.name}
-        name={props.name} className="custom-input w-100 py-2 font-weight-bold
-        text-uppercase bg-transparent" inputMode={props.inputmode || 'text'}
-        placeholder={props.placeholder} />
+      <input type={props.inputType || 'text'} id={props.name} onChange={props.onChange}
+        name={props.name} className={`${props.hasError ? 'error': ''} custom-input
+        w-100 py-2 font-weight-bold text-uppercase bg-transparent`} onBlur={props.onBlur}
+        inputMode={props.inputmode || 'text'} placeholder={props.placeholder} value={props.value} />
     </>
   );
 

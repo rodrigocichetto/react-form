@@ -5,7 +5,9 @@ import './Submit.css';
 const Submit = (props) => {
   return (
     <>
-      <button className="submit btn px-5 py-2 text-uppercase font-weight-bold">
+      <button onClick={props.onClick}
+        className={`${props.disabled() > 0 ? 'disabled': ''} submit btn px-5 py-2
+          text-uppercase font-weight-bold`}>
         {props.label}
         {props.children}
       </button>
