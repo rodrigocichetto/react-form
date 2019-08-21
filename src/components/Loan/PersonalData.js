@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import useForm from "react-hook-form";
 import { Spring } from 'react-spring/renderprops';
-import validator from 'validator';
 
 import { getExpedidores } from '../../store/expedidores/actions';
 import { saveLoan, clearMessage } from '../../store/loan/actions';
@@ -13,16 +13,11 @@ import CustomRadio from '../UI/Forms/CustomRadio';
 import Submit from '../UI/Forms/Submit';
 
 const LoanPersonalData = () => {
-  const initialPersonalData = {
-    rg: '',
-    emissao: '',
-    expedidor: '',
-    sexo: ''
-  };
 
-  const [personalData, setPersonalData] = useState(initialPersonalData);
-  const [errors, setError] = useState({});
-  const [hasSubmited, setSubmited] = useState(false);
+  const { handleSubmit, register, errors } = useForm({
+    submitFocusError: true
+  });
+  const [sexo, setSexo] = useState('');
 
   const expedidores = useSelector(state => state.expedidores.expedidores);
   const message = useSelector(state => state.loan.message);
@@ -33,42 +28,14 @@ const LoanPersonalData = () => {
     getExpedidores(dispatch);
   }, [dispatch]);
 
-  const handleChange = (event) => {
-    setPersonalData({ ...personalData, [event.currentTarget.name]: event.currentTarget.value });
+  const handleSexoChange = (event) => {
+    setSexo(event.currentTarget.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmited(true);
-    if (validate()) {
-      saveLoan(personalData, dispatch);
-      setPersonalData(initialPersonalData);
-    }
-  };
-
-  const hasErrors = () => Object.keys(errors).length > 0;
-
-  const validate = () => {
-    if (hasSubmited) {
-      let e = {};
-      if (validator.isEmpty(personalData.rg) ||
-        !validator.isLength(personalData.rg, {min: 9, max: 12})) {
-        e.rg = true;
-      }
-      if (validator.isEmpty(personalData.emissao) ||
-        !validator.isLength(personalData.emissao, {min: 10, max: 10}) ||
-        !personalData.emissao.match(/^(0?[1-9]|[12][0-9]|3[01])[/-](0?[1-9]|1[012])[/-]\d{4}$/)) {
-        e.emissao = true;
-      }
-      if (validator.isEmpty(personalData.expedidor)) {
-        e.expedidor = true;
-      }
-      if (validator.isEmpty(personalData.sexo)) {
-        e.sexo = true;
-      }
-      setError(e);
-      return Object.keys(e).length === 0;
-    }
+  const onSubmit = (values, e) => {
+    saveLoan(values, dispatch);
+    setSexo('');
+    e.target.reset();
   };
 
   const renderMessage = () => {
@@ -98,22 +65,25 @@ const LoanPersonalData = () => {
               Dados pessoais
             </h1>
             {renderMessage()}
-            <form name="personal-data" onSubmit={handleSubmit}>
+            <form name="personal-data" onSubmit={handleSubmit(onSubmit)}>
               <div className="row m-0 mb-md-5">
                 <div className="personal-data__input p-0 px-md-2 my-3 m-md-0 col-12 col-md-4">
-                  <CustomInput onChange={handleChange} name="rg" onBlur={validate}
+                  <CustomInput name="rg"
                     label="Número de RG" placeholder="12.345.678-9"
-                    hasError={errors.rg} inputmode="numeric" value={personalData.rg} />
+                    hasError={errors.rg} inputmode="numeric" register={register} 
+                    validations={{required: true, minLength: 9, maxLength: 12}} />
                 </div>
                 <div className="personal-data__input p-0 px-md-2 my-3 m-md-0 col-12 col-md-4">
-                  <CustomInput onChange={handleChange} name="emissao" onBlur={validate}
+                  <CustomInput name="emissao"
                     label="Emissão" mask="99/99/9999" placeholder="12/12/2012"
-                    hasError={errors.emissao} inputmode="numeric" value={personalData.emissao} />
+                    hasError={errors.emissao} inputmode="numeric" register={register}
+                    validations={{required: true, 
+                    pattern: /^(0?[1-9]|[12][0-9]|3[01])[/-](0?[1-9]|1[012])[/-]\d{4}$/}} />
                 </div>
                 <div className="personal-data__input p-0 px-md-2 my-3 m-md-0 col-12 col-md-4">
-                  <CustomSelect onChange={handleChange} options={expedidores} onBlur={validate}
+                  <CustomSelect options={expedidores}
                     name="expedidor" label="Órgão expedidor" hasError={errors.expedidor}
-                    value={personalData.expedidor} />
+                     register={register} required />
                 </div>
               </div>
               <div className="row m-0 mb-md-5">
@@ -122,16 +92,18 @@ const LoanPersonalData = () => {
                   sexo
                 </div>
                 <div className="personal-data__checkbox px-2 my-3 m-md-0 col-5 col-md-3">
-                  <CustomRadio activeItem={personalData.sexo} onChange={handleChange} name="sexo"
-                    value="M" label="Masculino" icon="fas fa-mars" validate={validate} />
+                  <CustomRadio activeItem={sexo} name="sexo"
+                    value="M" label="Masculino" icon="fas fa-mars" onChange={handleSexoChange}
+                    register={register} required />
                 </div>
                 <div className="personal-data__checkbox px-2 my-3 m-md-0 col-5 col-md-3">
-                  <CustomRadio activeItem={personalData.sexo} onChange={handleChange} name="sexo"
-                    value="F" label="Feminino" icon="fas fa-venus" validate={validate} />
+                  <CustomRadio activeItem={sexo} name="sexo"
+                    value="F" label="Feminino" icon="fas fa-venus" onChange={handleSexoChange}
+                    register={register} required />
                 </div>
               </div>
               <div className="row m-0 mb-md-5 justify-content-center">
-                <Submit disabled={hasErrors} label="Continuar" onClick={() => setSubmited(true)} type="submit">
+                <Submit disabled={errors} label="Continuar">
                   <i className="fas fa-caret-right ml-3"></i>
                 </Submit>
               </div>
