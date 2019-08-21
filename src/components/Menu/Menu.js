@@ -11,7 +11,7 @@ const Menu = () => (
       <i className="fas fa-bars"></i>
     </button>
     <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul className="nav nav-pills float-right">
+      <ul className="nav nav-pills float-md-right flex-column flex-md-row">
         <MenuItem label="Como funciona" href="#" />
         <MenuItem label="Privacidade" href="#" />
         <MenuItem label="Ajuda" href="#" />

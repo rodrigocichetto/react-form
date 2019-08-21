@@ -6,22 +6,24 @@ nav.menu {
   position: relative;
 }
 
-.nav-item::before {
-  content: '';
-  display: table;
-  position: absolute;
-  top: 1rem;
-  left: -0.1rem;
-  width: 0.5rem;
-  height: 0.5rem;
-  border: 0.1rem solid #0B92A5;
-  border-radius: 50%;
-}
-
-.nav-item:first-child:before {
-  display: none;
-}
-
 .navbar-toggler .fas {
   color: #FFF;
+}
+
+@media(min-width: 768px) {
+  .nav-item::before {
+    content: '';
+    display: table;
+    position: absolute;
+    top: 1rem;
+    left: -0.1rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 0.1rem solid #0B92A5;
+    border-radius: 50%;
+  }
+
+  .nav-item:first-child:before {
+    display: none;
+  }
 }

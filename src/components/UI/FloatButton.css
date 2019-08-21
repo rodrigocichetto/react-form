@@ -1,14 +1,15 @@
 .float-button {
   position: fixed;
   bottom: 3rem;
-  left: 3rem;
+  right: 2rem;
+  z-index: 99;
   display: flex;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   padding: 1rem;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border-radius: 50%;
   background: #2C2B2C;
   transition: background 0.3s ease-in;
@@ -26,4 +27,14 @@
 
 .float-button:hover i {
   color: #2C2B2C;
+}
+
+@media(min-width: 768px) {
+  .float-button {
+    bottom: 3rem;
+    left: 3rem;
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.5rem;
+  }
 }

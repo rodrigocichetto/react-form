@@ -24,7 +24,6 @@ const LoanList = (props) => {
         <table className="loan-list table table-bordered table-hover">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Rg</th>
               <th scope="col">Emissao</th>
               <th scope="col">Órgão</th>
@@ -35,7 +34,6 @@ const LoanList = (props) => {
           <tbody>
             {loans.map(l =>
                 <tr className="align-items-center" key={l.id}>
-                  <td>{l.id}</td>
                   <td>{l.rg}</td>
                   <td>{l.emissao}</td>
                   <td>{l.expedidor}</td>
