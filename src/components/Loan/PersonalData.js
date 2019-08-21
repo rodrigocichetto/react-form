@@ -69,9 +69,9 @@ const LoanPersonalData = () => {
               <div className="row m-0 mb-md-5">
                 <div className="personal-data__input p-0 px-md-2 my-3 m-md-0 col-12 col-md-4">
                   <CustomInput name="rg"
-                    label="Número de RG" placeholder="12.345.678-9"
+                    label="Número de RG" placeholder="12.345.678-9" mask="99.999.999-9"
                     hasError={errors.rg} inputmode="numeric" register={register} 
-                    validations={{required: true, minLength: 9, maxLength: 12}} />
+                    validations={{required: true, minLength: 12}} />
                 </div>
                 <div className="personal-data__input p-0 px-md-2 my-3 m-md-0 col-12 col-md-4">
                   <CustomInput name="emissao"
