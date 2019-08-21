@@ -4,7 +4,7 @@ import { Spring } from 'react-spring/renderprops';
 import validator from 'validator';
 
 import { getExpedidores } from '../../store/expedidores/actions';
-import { saveLoan } from '../../store/loan/actions';
+import { saveLoan, clearMessage } from '../../store/loan/actions';
 import CustomInput from '../UI/Forms/CustomInput';
 import CustomSelect from '../UI/Forms/CustomSelect';
 
@@ -34,8 +34,6 @@ const LoanPersonalData = () => {
   }, [dispatch]);
 
   const handleChange = (event) => {
-    console.log(event);
-    // debugger;
     setPersonalData({ ...personalData, [event.currentTarget.name]: event.currentTarget.value });
   };
 
@@ -44,7 +42,7 @@ const LoanPersonalData = () => {
     setSubmited(true);
     if (validate()) {
       saveLoan(personalData, dispatch);
-      setPersonalData({initialPersonalData});
+      setPersonalData(initialPersonalData);
     }
   };
 
@@ -58,7 +56,8 @@ const LoanPersonalData = () => {
         e.rg = true;
       }
       if (validator.isEmpty(personalData.emissao) ||
-        !validator.isLength(personalData.emissao, {min: 10, max: 10})) {
+        !validator.isLength(personalData.emissao, {min: 10, max: 10}) ||
+        !personalData.emissao.match(/^(0?[1-9]|[12][0-9]|3[01])[/-](0?[1-9]|1[012])[/-]\d{4}$/)) {
         e.emissao = true;
       }
       if (validator.isEmpty(personalData.expedidor)) {
@@ -73,17 +72,18 @@ const LoanPersonalData = () => {
   };
 
   const renderMessage = () => {
-    if (message.length > 0) {
+    if (message && message.length > 0) {
       return (
         <div className="alert alert-success alert-dismissible fade show
           font-weight-bold text-uppercase" role="alert">
           {message}
-          <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+          <button onClick={() => clearMessage(dispatch)} type="button" className="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
       )
     }
+    return <></>
   }
 
   return (

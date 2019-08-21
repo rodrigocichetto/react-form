@@ -1,0 +1,29 @@
+.float-button {
+  position: fixed;
+  bottom: 3rem;
+  left: 3rem;
+  display: flex;
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background: #2C2B2C;
+  transition: background 0.3s ease-in;
+}
+
+.float-button:hover {
+  background: #0995A9;
+  text-decoration: none;
+}
+
+.float-button i {
+  color: #0995A9;
+  transition: color 0.3s ease-in;
+}
+
+.float-button:hover i {
+  color: #2C2B2C;
+}

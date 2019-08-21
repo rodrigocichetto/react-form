@@ -17,10 +17,15 @@ export const saveLoan = (loan, dispatch) => {
 };
 
 export const deleteLoan = (loan, dispatch) => {
+  console.log(loan);
   axios.delete(`${CONFIG.API_URL}loan/${loan.id}`)
     .then(response => dispatch(success(t.DELETE_LOAN, response.data)))
     .catch(error => dispatch(failed(error)));
 };
+
+export const clearMessage = (dispatch) => {
+  dispatch({type: t.CLEAN_MESSAGES_LOAN});
+}
 
 function success(type, data) {
   return {
