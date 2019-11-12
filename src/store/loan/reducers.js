@@ -3,7 +3,7 @@ import * as t from './types';
 const INITIAL_STATE = {
   loans: [],
   message: '',
-  error: {}
+  error: {},
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,7 +19,7 @@ export default (state = INITIAL_STATE, action) => {
         message: action.data.message,
       };
     case t.DELETE_LOAN:
-      let loansFiltered = state.loans.filter(i => i.id !== action.data.id);
+      const loansFiltered = state.loans.filter(i => i.id !== action.data.id);
       return {
         ...state,
         loans: loansFiltered,
@@ -29,7 +29,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         message: '',
-        error: {}
+        error: {},
       };
     case t.FAIL_LOAN:
       return {

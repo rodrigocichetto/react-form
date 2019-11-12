@@ -5,8 +5,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 // eslint-disable-next-line
 import $ from 'jquery';
 import 'jquery-mask-plugin';
-import 'bootstrap/js/dist/collapse.js';
-import 'bootstrap/js/dist/alert.js';
+import 'bootstrap/js/dist/collapse';
+import 'bootstrap/js/dist/alert';
 import './styles/fonts.css';
 import './index.css';
 

@@ -1,41 +1,42 @@
-
-
-import * as t from './types';
 import axios from 'axios';
+import * as t from './types';
 import CONFIG from '../../utils/config';
 
-export const getLoans = (dispatch) => {
-  axios.get(`${CONFIG.API_URL}loan`)
+export const getLoans = dispatch => {
+  axios
+    .get(`${CONFIG.API_URL}loan`)
     .then(response => dispatch(success(t.LIST_LOAN, response.data)))
     .catch(error => dispatch(failed(error)));
 };
 
 export const saveLoan = (loan, dispatch) => {
-  axios.post(`${CONFIG.API_URL}loan`, loan)
+  axios
+    .post(`${CONFIG.API_URL}loan`, loan)
     .then(response => dispatch(success(t.CREATE_LOAN, response.data)))
     .catch(error => dispatch(failed(error)));
 };
 
 export const deleteLoan = (loan, dispatch) => {
-  axios.delete(`${CONFIG.API_URL}loan/${loan.id}`)
+  axios
+    .delete(`${CONFIG.API_URL}loan/${loan.id}`)
     .then(response => dispatch(success(t.DELETE_LOAN, response.data)))
     .catch(error => dispatch(failed(error)));
 };
 
-export const clearMessage = (dispatch) => {
-  dispatch({type: t.CLEAN_MESSAGES_LOAN});
-}
+export const clearMessage = dispatch => {
+  dispatch({ type: t.CLEAN_MESSAGES_LOAN });
+};
 
 function success(type, data) {
   return {
     type,
-    data
+    data,
   };
 }
 
 function failed(error) {
   return {
     type: t.FAIL_LOAN,
-    error
+    error,
   };
 }

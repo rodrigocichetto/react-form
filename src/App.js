@@ -13,15 +13,29 @@ const App = () => {
     <Provider store={store}>
       <Menu />
       <Router>
-        <Route exact path="/" render={() => <>
-          <FloatButton link="list" icon="table" /><LoanCheckout />
-        </>} />
-        <Route exact path="/list" render={() => <>
-          <FloatButton icon="plus" /><LoanList />
-        </>} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <>
+              <FloatButton link="list" icon="table" />
+              <LoanCheckout />
+            </>
+          )}
+        />
+        <Route
+          exact
+          path="/list"
+          render={() => (
+            <>
+              <FloatButton icon="plus" />
+              <LoanList />
+            </>
+          )}
+        />
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;
